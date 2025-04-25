@@ -43,7 +43,7 @@ test: ## run tests
 
 .PHONY: build
 build: ## build applications
-	pnpm run build
+	pnpm run build:tsp
 
 .PHONY: ci-test
 ci-test: install-deps-dev format-check lint test build ## run CI test

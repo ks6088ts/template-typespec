@@ -7,6 +7,7 @@
     "fix:prettier": "prettier --write src",
     "lint:prettier": "prettier --check src",
     "build": "tsc --build",
+    "build:tsp": "tsp compile . --output-dir ./dist",
     "clean": "tsc --build --clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
