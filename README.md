@@ -5,7 +5,7 @@
 
 # template-typespec
 
-A GitHub template repository for TypeScript
+A GitHub template repository for [TypeSpec](https://typespec.io/)
 
 ## Prerequisites
 
