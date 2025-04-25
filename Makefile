@@ -4,7 +4,7 @@ GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
 
 # Docker
 DOCKER_REPO_NAME ?= ks6088ts
-DOCKER_IMAGE_NAME ?= template-typescript
+DOCKER_IMAGE_NAME ?= template-typespec
 DOCKER_COMMAND ?=
 
 # Tools
@@ -43,7 +43,7 @@ test: ## run tests
 
 .PHONY: build
 build: ## build applications
-	pnpm run build
+	pnpm run build:tsp
 
 .PHONY: ci-test
 ci-test: install-deps-dev format-check lint test build ## run CI test

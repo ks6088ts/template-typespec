@@ -1,5 +1,5 @@
 {
-  "name": "template-typescript",
+  "name": "template-typespec",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,6 +7,7 @@
     "fix:prettier": "prettier --write src",
     "lint:prettier": "prettier --check src",
     "build": "tsc --build",
+    "build:tsp": "tsp compile . --output-dir ./dist",
     "clean": "tsc --build --clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,6 +15,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typespec/compiler": "1.0.0-rc.1",
+    "@typespec/http": "1.0.0-rc.1",
+    "@typespec/openapi3": "1.0.0-rc.1",
     "prettier": "^3.5.3"
   }
 }

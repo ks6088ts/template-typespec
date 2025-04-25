@@ -1,11 +1,11 @@
-[![test](https://github.com/ks6088ts/template-typescript/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typescript/actions/workflows/test.yaml?query=branch%3Amain)
-[![docker](https://github.com/ks6088ts/template-typescript/actions/workflows/docker.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typescript/actions/workflows/docker.yaml?query=branch%3Amain)
-[![docker-release](https://github.com/ks6088ts/template-typescript/actions/workflows/docker-release.yaml/badge.svg)](https://github.com/ks6088ts/template-typescript/actions/workflows/docker-release.yaml)
-[![ghcr-release](https://github.com/ks6088ts/template-typescript/actions/workflows/ghcr-release.yaml/badge.svg)](https://github.com/ks6088ts/template-typescript/actions/workflows/ghcr-release.yaml)
+[![test](https://github.com/ks6088ts/template-typespec/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typespec/actions/workflows/test.yaml?query=branch%3Amain)
+[![docker](https://github.com/ks6088ts/template-typespec/actions/workflows/docker.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typespec/actions/workflows/docker.yaml?query=branch%3Amain)
+[![docker-release](https://github.com/ks6088ts/template-typespec/actions/workflows/docker-release.yaml/badge.svg)](https://github.com/ks6088ts/template-typespec/actions/workflows/docker-release.yaml)
+[![ghcr-release](https://github.com/ks6088ts/template-typespec/actions/workflows/ghcr-release.yaml/badge.svg)](https://github.com/ks6088ts/template-typespec/actions/workflows/ghcr-release.yaml)
 
-# template-typescript
+# template-typespec
 
-A GitHub template repository for TypeScript
+A GitHub template repository for [TypeSpec](https://typespec.io/)
 
 ## Prerequisites
 
