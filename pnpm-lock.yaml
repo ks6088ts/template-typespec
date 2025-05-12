@@ -15,8 +15,8 @@ importers:
         specifier: 1.0.0-rc.1
         version: 1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)
       '@typespec/openapi3':
-        specifier: 1.0.0-rc.1
-        version: 1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1))(@typespec/openapi@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)))
+        specifier: 1.0.0
+        version: 1.0.0(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1))(@typespec/openapi@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)))
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -194,11 +194,11 @@ packages:
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
 
-  '@typespec/asset-emitter@0.69.0':
-    resolution: {integrity: sha512-EO/i+XwbY5PYV0zwaYbauuZDKjTZ8XDuQHzYa52vMj4RRUVHDsuaJuZ7sD5ZUJSQSXg7oExDSTzO8KYaXvg5Gg==}
+  '@typespec/asset-emitter@0.70.1':
+    resolution: {integrity: sha512-X8hRA7LLWkNIWqAkWaWoa84PzDMUvjj3qCLQKT29k5twS419nN1GGT7BQaDQnYfPTsSssEFxgRgugr0AAErEsA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@typespec/compiler': ^1.0.0-rc.1
+      '@typespec/compiler': ^1.0.0
 
   '@typespec/compiler@1.0.0-rc.1':
     resolution: {integrity: sha512-SDCB19wCVQVGTHOwkKnOnaGH2/vpr5aHLhTOs2k36AVsFrkurpMkL0TeE2QKiJszmkQeOnGW3bgH7Hbw15kXtw==}
@@ -215,16 +215,16 @@ packages:
       '@typespec/streams':
         optional: true
 
-  '@typespec/openapi3@1.0.0-rc.1':
-    resolution: {integrity: sha512-k+JqALqXHwjFoS7zTsuhJkbMydsp7UobNwSuw00jABTC5mkvCLwS+ZkWrkUB4+Lc3B2iNWZOCNL/Ynx3rFkq4w==}
+  '@typespec/openapi3@1.0.0':
+    resolution: {integrity: sha512-cDsnNtJkQCx0R/+9AqXzqAKH6CgtwmnQGQMQHbkw0/Sxs5uk6hoiexx7vz0DUR7H4492MqPT2kE4351KZbDYMw==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     peerDependencies:
-      '@typespec/compiler': ^1.0.0-rc.1
-      '@typespec/http': ^1.0.0-rc.1
-      '@typespec/json-schema': ^1.0.0-rc.1
-      '@typespec/openapi': ^1.0.0-rc.1
-      '@typespec/versioning': ^0.69.0
+      '@typespec/compiler': ^1.0.0
+      '@typespec/http': ^1.0.0
+      '@typespec/json-schema': ^1.0.0
+      '@typespec/openapi': ^1.0.0
+      '@typespec/versioning': ^0.70.0
       '@typespec/xml': '*'
     peerDependenciesMeta:
       '@typespec/json-schema':
@@ -694,7 +694,7 @@ snapshots:
 
   '@types/json-schema@7.0.15': {}
 
-  '@typespec/asset-emitter@0.69.0(@typespec/compiler@1.0.0-rc.1)':
+  '@typespec/asset-emitter@0.70.1(@typespec/compiler@1.0.0-rc.1)':
     dependencies:
       '@typespec/compiler': 1.0.0-rc.1
 
@@ -724,10 +724,10 @@ snapshots:
     dependencies:
       '@typespec/compiler': 1.0.0-rc.1
 
-  '@typespec/openapi3@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1))(@typespec/openapi@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)))':
+  '@typespec/openapi3@1.0.0(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1))(@typespec/openapi@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)))':
     dependencies:
       '@apidevtools/swagger-parser': 10.1.1(openapi-types@12.1.3)
-      '@typespec/asset-emitter': 0.69.0(@typespec/compiler@1.0.0-rc.1)
+      '@typespec/asset-emitter': 0.70.1(@typespec/compiler@1.0.0-rc.1)
       '@typespec/compiler': 1.0.0-rc.1
       '@typespec/http': 1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)
       '@typespec/openapi': 1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1)(@typespec/http@1.0.0-rc.1(@typespec/compiler@1.0.0-rc.1))
