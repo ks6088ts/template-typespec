@@ -46,3 +46,12 @@ rm -rf node_modules package-lock.json
 
 pnpm install
 ```
+
+## References
+
+### TypeSpec
+
+- [TypeSpec](https://github.com/Microsoft/typespec)
+- [TypeSpec / Docs](https://typespec.io/docs/)
+- [TypeSpec Extension in Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode)
+- [TypeSpec MCP Server and Emitter](https://github.com/microsoft/typespec-mcp)
