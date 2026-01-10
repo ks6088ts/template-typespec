@@ -35,3 +35,14 @@ gh repo edit ks6088ts/template-typespec \
 # Browse the GitHub repository
 gh browse
 ```
+
+## Use pnpm instead of npm
+
+```shell
+# Remove node_modules and package-lock.json
+rm -rf node_modules package-lock.json
+
+# Remove "packageManager": "npm@x.x.x" from package.json
+
+pnpm install
+```
