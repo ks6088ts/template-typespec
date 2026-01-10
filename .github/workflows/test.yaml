@@ -1,0 +1,43 @@
+name: test
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'feature/**'
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        platform:
+          - 'ubuntu-latest'
+          # - 'macos-latest'
+          # - 'windows-latest'
+        node-version:
+          - '24.10.0'
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # to retrieve git tags
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Run CI tests
+        shell: bash
+        run: |
+          make ci-test
+      - name: Upload output file as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema
+          path: ./tsp-output
+          retention-days: 1
