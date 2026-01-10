@@ -39,5 +39,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: schema
-          path: ./dist
+          path: ./tsp-output
           retention-days: 1
