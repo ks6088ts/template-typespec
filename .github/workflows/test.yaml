@@ -36,7 +36,7 @@ jobs:
         run: |
           make ci-test
       - name: Upload output file as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: schema
           path: ./tsp-output
