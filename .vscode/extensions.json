@@ -2,5 +2,7 @@
 	"recommendations": [
 		"typespec.typespec-vscode",
     "42Crunch.vscode-openapi",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
 	],
 }
