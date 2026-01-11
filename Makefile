@@ -12,10 +12,12 @@ install-deps-dev: ## install dependencies for development
 	@which npm || echo "Please install Node.js and npm from https://nodejs.org/en/download/"
 	@which pnpm || npm install -g pnpm
 	@which tsp || npm install -g @typespec/compiler
+	@which cspell || npm install -g cspell
 	pnpm install
 
 .PHONY: lint
 lint: ## lint
+	cspell "**/*.tsp" --config cspell.config.yaml
 	tsp format "**/*.tsp" --check
 
 .PHONY: build
@@ -38,3 +40,7 @@ fix: ## apply auto-fixes
 .PHONY: update
 update: ## update dependencies
 	pnpm update --latest
+
+.PHONY: cspell-update-dictionary
+cspell-update-dictionary: ## update cspell dictionary (ref. https://cspell.org/docs/getting-started)
+	cspell --words-only --unique "**/*.tsp" | sort --ignore-case >> project-words.txt
