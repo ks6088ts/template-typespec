@@ -20,7 +20,7 @@ lint: ## lint
 
 .PHONY: build
 build: ## build applications
-	tsp compile specification \
+	tsp compile specifications \
 		--output-dir=./tsp-output \
 
 .PHONY: ci-test
