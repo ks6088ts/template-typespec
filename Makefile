@@ -1,3 +1,7 @@
+# Git
+GIT_REVISION ?= $(shell git rev-parse --short HEAD)
+GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
+
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -10,13 +14,26 @@ install-deps-dev: ## install dependencies for development
 	@which tsp || npm install -g @typespec/compiler
 	pnpm install
 
+.PHONY: lint
+lint: ## lint
+	tsp format "**/*.tsp" --check
+
 .PHONY: build
 build: ## build applications
-	tsp compile specification \
+	tsp compile specifications \
 		--output-dir=./tsp-output \
 
 .PHONY: ci-test
-ci-test: install-deps-dev build ## run CI test
+ci-test: install-deps-dev lint build ## run CI test
+
+.PHONY: info
+info: ## show information
+	@echo "GIT_REVISION: $(GIT_REVISION)"
+	@echo "GIT_TAG: $(GIT_TAG)"
+
+.PHONY: fix
+fix: ## apply auto-fixes
+	tsp format "**/*.tsp"
 
 .PHONY: update
 update: ## update dependencies
