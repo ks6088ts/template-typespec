@@ -12,6 +12,9 @@ tsp init \
   --template rest \
   --project-name template-typespec \
   --template-emitters @typespec/openapi3 \
+  --template-emitters @typespec/http-server-js \
+  --template-emitters @typespec/http-client-js \
+  --template-emitters @typespec/http-client-python \
   --no-prompt
 
 # Create a Git repository
@@ -54,6 +57,8 @@ pnpm install
 - [TypeSpec](https://github.com/Microsoft/typespec)
 - [TypeSpec / Docs](https://typespec.io/docs/)
 - [TypeSpec Extension in Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=typespec.typespec-vscode)
+- [Client Emitters](https://typespec.io/docs/emitters/clients/introduction/)
+- [TypeSpec HTTP server code generator for JavaScript](https://typespec.io/docs/emitters/servers/http-server-js/reference/)
 - [TypeSpec MCP Server and Emitter](https://github.com/microsoft/typespec-mcp)
 - [Resources for developing TypeSpec apps](https://learn.microsoft.com/en-us/azure/developer/typespec/resources)
 

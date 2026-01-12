@@ -38,6 +38,6 @@ jobs:
       - name: Upload output file as artifact
         uses: actions/upload-artifact@v6
         with:
-          name: schema
+          name: artifacts
           path: ./tsp-output
           retention-days: 1

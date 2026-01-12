@@ -1,10 +1,23 @@
 parameters:
-  "service-dir":
-    default: "schema"
+  "schema-dir":
+    default: "schemas"
+  "client-dir":
+    default: "clients"
+  "server-dir":
+    default: "servers"
 emit:
   - "@typespec/openapi3"
+  - "@typespec/http-client-js"
+  - "@typespec/http-client-python"
+  - "@typespec/http-server-js"
 options:
   "@typespec/openapi3":
-    emitter-output-dir: "{output-dir}/{service-dir}"
+    emitter-output-dir: "{output-dir}/{schema-dir}"
     openapi-versions:
       - 3.1.0
+  "@typespec/http-client-js":
+    emitter-output-dir: "{output-dir}/{client-dir}/js"
+  "@typespec/http-client-python":
+    emitter-output-dir: "{output-dir}/{client-dir}/python"
+  "@typespec/http-server-js":
+    emitter-output-dir: "{output-dir}/{server-dir}/js"

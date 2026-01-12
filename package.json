@@ -8,6 +8,9 @@
     "@typespec/http": "latest",
     "@typespec/rest": "latest",
     "@typespec/openapi": "latest",
-    "@typespec/openapi3": "latest"
+    "@typespec/openapi3": "latest",
+    "@typespec/http-client-js": "latest",
+    "@typespec/http-client-python": "latest",
+    "@typespec/http-server-js": "latest"
   }
 }
