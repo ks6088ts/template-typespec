@@ -4,8 +4,7 @@ GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
 
 # Parameters
 OUTPUT_DIR ?= ./tsp-output
-SERVICE ?=
-OPENAPI_SPEC_YAML_BASE ?= ./tsp-output/schema/openapi.yaml
+OPENAPI_SPEC_YAML_BASE ?= ./tsp-output/schemas/openapi.yaml
 
 .PHONY: help
 help:
@@ -27,12 +26,12 @@ lint: ## lint
 
 .PHONY: build
 build: ## build applications
-	tsp compile specifications/$(SERVICE) \
+	tsp compile specifications \
 		--output-dir=$(OUTPUT_DIR)
 
 .PHONY: build-watch
 build-watch: ## build applications in watch mode
-	tsp compile specifications/$(SERVICE) \
+	tsp compile specifications \
 		--output-dir=$(OUTPUT_DIR) \
 		--watch
 
@@ -62,10 +61,10 @@ cspell-update-dictionary: ## update cspell dictionary (ref. https://cspell.org/d
 
 .PHONY: oasdiff-breaking
 oasdiff-breaking: ## display breaking changes between two OpenAPI specifications
-	oasdiff breaking $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schema/openapi.yaml \
+	oasdiff breaking $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schemas/openapi.yaml \
 		--fail-on ERR
 
 .PHONY: oasdiff-changelog
 oasdiff-changelog: ## display changes between two OpenAPI specifications
-	oasdiff changelog $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schema/openapi.yaml \
+	oasdiff changelog $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schemas/openapi.yaml \
 		--fail-on ERR
