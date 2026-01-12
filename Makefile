@@ -4,6 +4,7 @@ GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
 
 # Parameters
 OUTPUT_DIR ?= ./tsp-output
+SERVICE ?=
 OPENAPI_SPEC_YAML_BASE ?= ./tsp-output/schema/openapi.yaml
 
 .PHONY: help
@@ -26,8 +27,14 @@ lint: ## lint
 
 .PHONY: build
 build: ## build applications
-	tsp compile specifications \
+	tsp compile specifications/$(SERVICE) \
+		--output-dir=$(OUTPUT_DIR)
+
+.PHONY: build-watch
+build-watch: ## build applications in watch mode
+	tsp compile specifications/$(SERVICE) \
 		--output-dir=$(OUTPUT_DIR) \
+		--watch
 
 .PHONY: ci-test
 ci-test: install-deps-dev lint build ## run CI test
@@ -44,6 +51,10 @@ fix: ## apply auto-fixes
 .PHONY: update
 update: ## update dependencies
 	pnpm update --latest
+
+.PHONY: clean
+clean: ## clean output directory
+	rm -rf $(OUTPUT_DIR)
 
 .PHONY: cspell-update-dictionary
 cspell-update-dictionary: ## update cspell dictionary (ref. https://cspell.org/docs/getting-started)
