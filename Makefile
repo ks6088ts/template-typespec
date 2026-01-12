@@ -2,6 +2,10 @@
 GIT_REVISION ?= $(shell git rev-parse --short HEAD)
 GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
 
+# Parameters
+OUTPUT_DIR ?= ./tsp-output
+OPENAPI_SPEC_YAML_BASE ?= ./tsp-output/schema/openapi.yaml
+
 .PHONY: help
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -23,7 +27,7 @@ lint: ## lint
 .PHONY: build
 build: ## build applications
 	tsp compile specifications \
-		--output-dir=./tsp-output \
+		--output-dir=$(OUTPUT_DIR) \
 
 .PHONY: ci-test
 ci-test: install-deps-dev lint build ## run CI test
@@ -44,3 +48,13 @@ update: ## update dependencies
 .PHONY: cspell-update-dictionary
 cspell-update-dictionary: ## update cspell dictionary (ref. https://cspell.org/docs/getting-started)
 	cspell --words-only --unique "**/*.tsp" | sort --ignore-case >> project-words.txt
+
+.PHONY: oasdiff-breaking
+oasdiff-breaking: ## display breaking changes between two OpenAPI specifications
+	oasdiff breaking $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schema/openapi.yaml \
+		--fail-on ERR
+
+.PHONY: oasdiff-changelog
+oasdiff-changelog: ## display changes between two OpenAPI specifications
+	oasdiff changelog $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schema/openapi.yaml \
+		--fail-on ERR
