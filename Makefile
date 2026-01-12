@@ -13,10 +13,10 @@ help:
 
 .PHONY: install-deps-dev
 install-deps-dev: ## install dependencies for development
-	@which npm || echo "Please install Node.js and npm from https://nodejs.org/en/download/"
-	@which pnpm || npm install -g pnpm
-	@which tsp || npm install -g @typespec/compiler
-	@which cspell || npm install -g cspell
+	@command -v npm > /dev/null || echo "Please install Node.js and npm from https://nodejs.org/en/download/"
+	@command -v pnpm > /dev/null || npm install -g pnpm
+	@command -v tsp > /dev/null || npm install -g @typespec/compiler
+	@command -v cspell > /dev/null || npm install -g cspell
 	pnpm install
 
 .PHONY: lint
