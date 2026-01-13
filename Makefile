@@ -17,7 +17,7 @@ help:
 install-deps-dev: ## install dependencies for development
 	@command -v npm > /dev/null || echo "Please install Node.js and npm from https://nodejs.org/en/download/"
 	@command -v pnpm > /dev/null || npm install -g pnpm
-	pnpm install
+	pnpm install --frozen-lockfile
 
 .PHONY: lint
 lint: ## lint
