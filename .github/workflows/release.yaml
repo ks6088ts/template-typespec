@@ -1,0 +1,38 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.2
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24.10.0'
+          cache: 'pnpm'
+      - name: Run CI tests
+        shell: bash
+        run: |
+          make ci-test
+      - name: Upload output file as artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: artifacts-${{ github.ref_name }}
+          path: ./tsp-output
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            ./tsp-output/schemas/openapi.yaml
