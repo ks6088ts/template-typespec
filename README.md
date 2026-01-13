@@ -1,5 +1,5 @@
 [![test](https://github.com/ks6088ts/template-typespec/actions/workflows/test.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typespec/actions/workflows/test.yaml?query=branch%3Amain)
-[![release](https://github.com/ks6088ts/template-typespec/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/ks6088ts/template-typespec/actions/workflows/release.yaml?query=branch%3Amain)
+[![release](https://github.com/ks6088ts/template-typespec/actions/workflows/release.yaml/badge.svg)](https://github.com/ks6088ts/template-typespec/actions/workflows/release.yaml)
 
 # template-typespec
 
