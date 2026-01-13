@@ -1,0 +1,27 @@
+name: "Setup and Build"
+description: "Setup Node.js with pnpm and run CI tests"
+
+inputs:
+  node-version:
+    description: "Node.js version to use"
+    required: false
+    default: "24.10.0"
+  pnpm-version:
+    description: "pnpm version to use"
+    required: false
+    default: "9.15.2"
+
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v4
+      with:
+        version: ${{ inputs.pnpm-version }}
+    - uses: actions/setup-node@v6
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: "pnpm"
+    - name: Run CI tests
+      shell: bash
+      run: |
+        make ci-test
