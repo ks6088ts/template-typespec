@@ -6,11 +6,12 @@
   "dependencies": {
     "@typespec/compiler": "latest",
     "@typespec/http": "latest",
-    "@typespec/rest": "latest",
-    "@typespec/openapi": "latest",
-    "@typespec/openapi3": "latest",
     "@typespec/http-client-js": "latest",
     "@typespec/http-client-python": "latest",
-    "@typespec/http-server-js": "latest"
+    "@typespec/http-server-js": "latest",
+    "@typespec/openapi": "latest",
+    "@typespec/openapi3": "latest",
+    "@typespec/rest": "latest",
+    "cspell": "^9.6.0"
   }
 }

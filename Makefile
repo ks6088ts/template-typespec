@@ -3,8 +3,10 @@ GIT_REVISION ?= $(shell git rev-parse --short HEAD)
 GIT_TAG ?= $(shell git describe --tags --abbrev=0 --always | sed -e s/v//g)
 
 # Parameters
+TSP_DIR ?= ./specifications
 OUTPUT_DIR ?= ./tsp-output
-OPENAPI_SPEC_YAML_BASE ?= ./tsp-output/schemas/openapi.yaml
+OPENAPI_SPEC_YAML ?= $(OUTPUT_DIR)/schemas/openapi.yaml
+OPENAPI_SPEC_YAML_BASE ?= $(OPENAPI_SPEC_YAML)
 
 .PHONY: help
 help:
@@ -15,23 +17,21 @@ help:
 install-deps-dev: ## install dependencies for development
 	@command -v npm > /dev/null || echo "Please install Node.js and npm from https://nodejs.org/en/download/"
 	@command -v pnpm > /dev/null || npm install -g pnpm
-	@command -v tsp > /dev/null || npm install -g @typespec/compiler
-	@command -v cspell > /dev/null || npm install -g cspell
 	pnpm install
 
 .PHONY: lint
 lint: ## lint
-	cspell "**/*.tsp" --config cspell.config.yaml
-	tsp format "**/*.tsp" --check
+	pnpm exec cspell "**/*.tsp" --config cspell.config.yaml
+	pnpm exec tsp format "**/*.tsp" --check
 
 .PHONY: build
 build: ## build applications
-	tsp compile specifications \
+	pnpm exec tsp compile $(TSP_DIR) \
 		--output-dir=$(OUTPUT_DIR)
 
 .PHONY: build-watch
 build-watch: ## build applications in watch mode
-	tsp compile specifications \
+	pnpm exec tsp compile $(TSP_DIR) \
 		--output-dir=$(OUTPUT_DIR) \
 		--watch
 
@@ -45,7 +45,7 @@ info: ## show information
 
 .PHONY: fix
 fix: ## apply auto-fixes
-	tsp format "**/*.tsp"
+	pnpm exec tsp format "**/*.tsp"
 
 .PHONY: update
 update: ## update dependencies
@@ -55,16 +55,20 @@ update: ## update dependencies
 clean: ## clean output directory
 	rm -rf $(OUTPUT_DIR)
 
+.PHONY: tsp-openapi3
+tsp-openapi3: ## convert OpenAPI3 to TypeSpec
+	pnpm exec tsp-openapi3 $(OPENAPI_SPEC_YAML) --output-dir $(OUTPUT_DIR)/tsp
+
 .PHONY: cspell-update-dictionary
 cspell-update-dictionary: ## update cspell dictionary (ref. https://cspell.org/docs/getting-started)
-	cspell --words-only --unique "**/*.tsp" | sort --ignore-case >> project-words.txt
+	pnpm exec cspell --words-only --unique "**/*.tsp" | sort --ignore-case >> project-words.txt
 
 .PHONY: oasdiff-breaking
 oasdiff-breaking: ## display breaking changes between two OpenAPI specifications
-	oasdiff breaking $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schemas/openapi.yaml \
+	oasdiff breaking $(OPENAPI_SPEC_YAML_BASE) $(OPENAPI_SPEC_YAML) \
 		--fail-on ERR
 
 .PHONY: oasdiff-changelog
 oasdiff-changelog: ## display changes between two OpenAPI specifications
-	oasdiff changelog $(OPENAPI_SPEC_YAML_BASE) $(OUTPUT_DIR)/schemas/openapi.yaml \
+	oasdiff changelog $(OPENAPI_SPEC_YAML_BASE) $(OPENAPI_SPEC_YAML) \
 		--fail-on ERR
